@@ -6,5 +6,10 @@
         "isEnabled": false
       }
     }
+  },
+  "extensions": {
+    "durableTask": {
+      "maxConcurrentActivityFunctions": 20
+    }
   }
 }

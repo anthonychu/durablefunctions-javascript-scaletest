@@ -17,12 +17,14 @@ module.exports = df.orchestrator(function* (context) {
 
     context.log('adding responses to result');
     for (var i = 0; i < executionResults.length; i++) {
-        result.push({ key: i, value: executionResults[i].statusCode });
+        if (executionResults[i].statusCode !== 200) {
+            result.push({ key: i, value: executionResults[i] });
+        }
     }
 
     context.df.setCustomStatus("Success");
 
     context.log('returning...');
-    context.log(result);
+    context.log({ failures: result.length, result });
     return result;
 });
