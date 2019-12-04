@@ -26,5 +26,9 @@ module.exports = df.orchestrator(function* (context) {
 
     context.log('returning...');
     context.log({ failures: result.length, result });
-    return result;
+    if (result.length) {
+        return { failures: result.length, result };
+    } else {
+        return 0;
+    }
 });

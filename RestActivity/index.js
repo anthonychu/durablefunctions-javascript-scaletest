@@ -2,9 +2,9 @@ const request = require("request");
 const http = require("http");
 const https = require("https");
 const axios = require('axios').default;
-const MAX_SOCKETS = 5;
-axios.defaults.httpAgent = new http.Agent({maxSockets: MAX_SOCKETS, maxFreeSockets: MAX_SOCKETS});;
-axios.defaults.httpsAgent = new https.Agent({maxSockets: MAX_SOCKETS, maxFreeSockets: MAX_SOCKETS});
+// const MAX_SOCKETS = 10;
+// axios.defaults.httpAgent = new http.Agent({maxSockets: MAX_SOCKETS, maxFreeSockets: MAX_SOCKETS});;
+// axios.defaults.httpsAgent = new https.Agent({maxSockets: MAX_SOCKETS, maxFreeSockets: MAX_SOCKETS});
 
 module.exports = async function (context) {
     context.log(`Running RestActivity at ${context.bindings.input.url} ...`);
@@ -20,7 +20,8 @@ module.exports = async function (context) {
 
     return {
         statusCode: resp && resp.status,
-        error: err && err.message
+        error: err && err.message,
+        serverId: process.env.WEBSITE_INSTANCE_ID
     };
 
     // var resp = await new Promise((resolve, reject) => {
