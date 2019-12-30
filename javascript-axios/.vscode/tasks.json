@@ -1,0 +1,34 @@
+{
+    "tasks": [
+        {
+            "label": "runFunctionsHost",
+            "type": "shell",
+            "command": "func host start",
+            "isBackground": true,
+            "presentation": {
+                "reveal": "always"
+            },
+            "problemMatcher": "$func-watch",
+            "options": {
+                "env": {
+                    "languageWorkers__node__arguments": "--inspect=5858"
+                }
+            },
+            "dependsOn": "installExtensions"
+        },
+        {
+            "label": "installExtensions",
+            "command": "func extensions install",
+            "type": "shell",
+            "presentation": {
+                "reveal": "always"
+            }
+        },
+        {
+            "type": "func",
+            "command": "host start",
+            "problemMatcher": "$func-watch",
+            "isBackground": true
+        }
+    ]
+}
