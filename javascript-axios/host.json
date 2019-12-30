@@ -9,7 +9,7 @@
   },
   "extensions": {
     "durableTask": {
-      "hubName": "AxiosTestHub",
+      "hubName": "AxiosTestHub4",
       "maxConcurrentActivityFunctions": 5
     }
   }

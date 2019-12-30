@@ -1,12 +1,13 @@
-//const http = require("http");
-const https = require("https");
-const axios = require('axios').default;
-const MAX_SOCKETS = 10;
 const config = {
-    maxSockets: MAX_SOCKETS
+    maxSockets: 10,
+    maxFreeSockets: 10,
+    timeout: 30000,
+    freeSocketKeepAliveTimeout: 30000
 };
-//axios.defaults.httpAgent = new http.Agent(config);
-axios.defaults.httpsAgent = new https.Agent(config);
+const Agent = require("agentkeepalive").HttpsAgent;
+const agent = new Agent(config);
+const axios = require("axios").default;
+axios.defaults.httpsAgent = agent;
 
 const Bottleneck = require("bottleneck");
 const limiter = new Bottleneck({ minTime: 250 });
