@@ -15,6 +15,6 @@ const limiter = new Bottleneck({ minTime: 250 });
 module.exports = async function (context) {
     context.log(`Running RestActivity at ${context.bindings.input.url} ...`);
     // const resp = await axios.post(context.bindings.input.url);
-    const resp = await limiter.schedule(() => axios.post(context.bindings.input.url));
+    const resp = await limiter.schedule(() => axios.get(context.bindings.input.url));
     return { statusCode: resp.status };
 };

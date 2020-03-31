@@ -5,6 +5,9 @@
       "samplingSettings": {
         "isEnabled": false
       }
+    },
+    "logLevel": {
+      "default": "Warning"
     }
   },
   "extensions": {

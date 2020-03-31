@@ -1,5 +1,6 @@
 const df = require("durable-functions");
-const testUrl = "https://xtension01.azurewebsites.net/api/Increment01?input=1";
+// const testUrl = "https://xtension01.azurewebsites.net/api/Increment01?input=1";
+const testUrl = "https://pythonqueueimage.blob.core.windows.net/images/Dog/0.jpg";
 const numParallelExecutions = 100;
 
 module.exports = df.orchestrator(function* (context) {
